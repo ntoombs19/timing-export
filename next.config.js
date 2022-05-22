@@ -1,10 +1,12 @@
-/** @type {import('next').NextConfig} */
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+/** @type {import("next").NextConfig} */
+let withPWA;
+withPWA = require('next-pwa');
+let runtimeCaching;
+runtimeCaching = require('next-pwa/cache');
 
 module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
-  },
-})
+    pwa: {
+        dest: 'public',
+        runtimeCaching,
+    },
+});
