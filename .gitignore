@@ -42,4 +42,13 @@ Thumbs.db
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
-yarn-error.log
+
+# PWA Files
+**/public/workbox-*.js
+**/public/workerbox-*.js.map
+**/public/sw.js
+**/public/sw.js.map
+**/public/fallback-*.js
+**/public/fallback-*.js.map
+**/public/worker-*.js
+**/public/worker-*.js.map
