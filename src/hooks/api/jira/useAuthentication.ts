@@ -16,21 +16,21 @@ const useAuthentication = ({ handleNext }: Props) => {
 
     const handleFormSubmit = useCallback((e) => {
         e.preventDefault();
-        setItem('personalAccessToken', e.currentTarget.pat.value);
+        setItem('jiraToken', e.currentTarget.token.value);
         (async () => {
             try {
                 setIsLoading(true);
                 const response = await fetch('https://jira.classyllama.com/rest/api/2/myself', {
                     method: 'GET',
                     headers: {
-                        Authorization: `Bearer ${getItem('personalAccessToken')}`,
+                        Authorization: `Bearer ${getItem('jiraToken')}`,
                     },
                     redirect: 'follow',
                 });
                 setIsLoading(false);
                 if (response.ok)
                     handleNext();
-                 else 
+                 else
                     setAuthenticationFailed(true);
             } catch (e : Exception) {
                 setAuthenticationFailed(true);

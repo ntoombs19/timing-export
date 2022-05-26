@@ -30,8 +30,8 @@ const JiraAuth = (props: Props) => {
                 <CardContent>
                     <form onSubmit={handleFormSubmit} method='POST'>
                         <Stack spacing={2}>
-                            <TextField name='pat'
-                                       label='Personal Access Token'
+                            <TextField name='token'
+                                       label='Jira API Token'
                                        type='Password'
                                        required
                             ></TextField>

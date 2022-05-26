@@ -1,13 +1,14 @@
 import JiraAuth from '../JiraAuth';
+import TimingAuth from '../TimingAuth';
 import useSetupSteps from '../../hooks/helpers/useSetupSteps';
-import { Stepper, Step, StepLabel, StepContent, Typography, Button } from '@mui/material';
+import { Stepper, Step, StepLabel, StepContent, Typography } from '@mui/material';
 
-const SetupSteps = () => {
+const SetupSteps = (props) => {
     const {
         activeStep,
+        handleComplete,
         handleNext,
-        handleBack,
-    } = useSetupSteps();
+    } = useSetupSteps(props);
 
     const steps = [
         // TODO: Add 'Install Timing Export' step
@@ -23,7 +24,7 @@ const SetupSteps = () => {
         },
         {
             label: 'Authenticate with Timing',
-            content: (<Button variant='contained' size='large' onClick={handleBack}>Go Back</Button>),
+            content: (<TimingAuth {...{ handleComplete }} />),
             complete: '',
         },
     ];

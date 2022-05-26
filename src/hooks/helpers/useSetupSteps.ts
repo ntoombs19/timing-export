@@ -1,7 +1,7 @@
 import { useState } from 'react';
-
-const useSetupSteps = () => {
+const useSetupSteps = (props) => {
     const [activeStep, setActiveStep] = useState(0);
+    const { setSetupComplete } = props;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -15,12 +15,17 @@ const useSetupSteps = () => {
         setActiveStep(0);
     };
 
+    const handleComplete = () => {
+        setSetupComplete(true);
+    };
+
     return {
         activeStep,
         setActiveStep,
         handleNext,
         handleBack,
         handleReset,
+        handleComplete,
     };
 };
 
