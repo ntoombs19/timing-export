@@ -12,6 +12,7 @@ const useAuthentication = ({ handleNext }: Props) => {
     } = useStorage();
 
     const [ isLoading, setIsLoading ] = useState(false);
+    const [ authenticationFailed, setAuthenticationFailed ] = useState(false);
 
     const handleFormSubmit = useCallback((e) => {
         e.preventDefault();
@@ -27,20 +28,26 @@ const useAuthentication = ({ handleNext }: Props) => {
                     redirect: 'follow',
                 });
                 setIsLoading(false);
-                if (response.ok) 
+                if (response.ok)
                     handleNext();
-                 else {
-                    // TODO: add error handling
-                }
-            } catch (e) {
-                // TODO: add error handling
+                 else 
+                    setAuthenticationFailed(true);
+            } catch (e : Exception) {
+                setAuthenticationFailed(true);
+                process.env.NODE_ENV === 'development' ? console.error(e.message) : null;
             }
         })();
     }, [setItem, getItem, handleNext]);
 
+    const handleClose = () => {
+        setAuthenticationFailed(false);
+    };
+
     return {
         handleFormSubmit,
         isLoading,
+        authenticationFailed,
+        handleClose,
     };
 };
 
