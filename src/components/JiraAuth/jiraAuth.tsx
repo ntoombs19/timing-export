@@ -42,9 +42,9 @@ const JiraAuth = (props: Props) => {
                             variant='contained'
                             size='large'
                             loading={isLoading}
-                            loadingPosition='start'
+                            loadingPosition='center'
                         >
-                            {isLoading ? 'Authenticating' : 'Authenticate'}
+                            Authenticate
                         </LoadingButton>
                     </Stack>
                 </form>
