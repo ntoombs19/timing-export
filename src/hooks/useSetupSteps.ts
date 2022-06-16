@@ -1,22 +1,24 @@
-import { useState } from 'react';
-const useSetupSteps = (props) => {
+import { useState, SetStateAction } from 'react';
+import { useAppContext } from '../contexts/AppContext';
+const useSetupSteps = () => {
     const [activeStep, setActiveStep] = useState(0);
-    const { setSetupComplete } = props;
+    const { setIsAuthenticated } = useAppContext();
 
-    const handleNext = () => {
+    const handleNext = (): SetStateAction<number> => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        return activeStep;
     };
 
-    const handleBack = () => {
+    const handleBack = (): void => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
+    const handleReset = (): void => {
         setActiveStep(0);
     };
 
-    const handleComplete = () => {
-        setSetupComplete(true);
+    const handleComplete = (): void => {
+        setIsAuthenticated(true);
     };
 
     return {
